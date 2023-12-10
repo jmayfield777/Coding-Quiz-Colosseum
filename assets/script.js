@@ -166,6 +166,7 @@ let quizApp = {
         } 
         else {
             // wrong answer
+            secondsLeft -= 5;
             console.log('incorrect');
         }
         
