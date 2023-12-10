@@ -1,16 +1,17 @@
-let questions = [
-    {
-        id: 1,
-        question: "Which of the following is NOT a commonly used data type?",
-        answer: "alerts",
-        options: [
-            "booleans",
-            "strings",
-            "numbers"
+let question = {
+    title: "Which of the following is NOT a commonly used data type?",
+    answer: "alerts",
+    option: [
+        "booleans",
+        "strings",
+        "numbers",
+        "alerts"
         ]
-    },
+};
+
+    /*
     {
-        id: 2,
+        title: 2,
         question: "Which of the following is a useful method to iterate over items inside an array?",
         answer: "for loop",
         options: [
@@ -20,7 +21,7 @@ let questions = [
         ]
     },
     {
-        id: 3,
+        title: 3,
         question: "Which scope will hold a variable declared inside a function?",
         answer: "local",
         options: [
@@ -30,7 +31,7 @@ let questions = [
         ]
     },
     {
-        id: 4,
+        title: 4,
         question: "The condition in a if/else statement is enclosed inside:",
         answer: "curly brackets",
         options: [
@@ -40,7 +41,7 @@ let questions = [
         ]
     },
     {
-        id: 5,
+        title: 5,
         question: "Where do you link to a Javascript file inside the HTML document?",
         answer: "inside the body but at the bottom",
         options: [
@@ -50,7 +51,7 @@ let questions = [
         ]
     },
     {
-        id: 6,
+        title: 6,
         question: "Arrays in Javascript can be used to store:",
         answer: "all of the above",
         options: [
@@ -60,7 +61,7 @@ let questions = [
         ]
     },
     {
-        id: 7,
+        title: 7,
         question: "What does DOM stand for?",
         answer: "Document Object Model",
         options: [
@@ -70,7 +71,7 @@ let questions = [
         ]
     },
     {
-        id: 8,
+        title: 8,
         question: "What does the triple equals symbol mean?",
         answer: "strict equality operator",
         options: [
@@ -80,7 +81,7 @@ let questions = [
         ]
     },
     {
-        id: 9,
+        title: 9,
         question: "Which of the following is helpful for debugging code while using the browser:",
         answer: "the console",
         options: [
@@ -90,7 +91,7 @@ let questions = [
         ]
     },
     {
-        id: 10,
+        title: 10,
         question: "Which of the following can be used to declare a variable?",
         answer: "all of the above",
         options: [
@@ -100,3 +101,27 @@ let questions = [
         ]
     },
 ];
+
+*/
+
+function showQuestion(q) {
+    // select title element
+    let titleDiv = document.getElementById('title');
+
+    // modify title element
+    titleDiv.textContent = q.title;
+
+    let options = document.querySelectorAll('.options');
+    
+    options.forEach(function(element, index) {
+        element.textContent = q.option[index];
+
+        element.addEventListener('click', function() {
+            // check for correct answer
+            
+        })
+    })
+
+};
+
+showQuestion(question);
