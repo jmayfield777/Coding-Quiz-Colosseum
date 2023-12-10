@@ -1,14 +1,3 @@
-let question = {
-    title: "Which of the following is NOT a commonly used data type?",
-    answer: 3,
-    options: [
-        "booleans",
-        "strings",
-        "numbers",
-        "alerts"
-        ]
-};
-
 let questions = [
     {
         title: "Which of the following is NOT a commonly used data type?",
@@ -112,11 +101,17 @@ let questions = [
     },
 ];
 
+// timer for quiz
+let secondsLeft = 60;
+
 
 let quizApp = {
     startQuiz: function() {
         
+        // counter for score
         this.currentPosition = 0;
+
+        // counter for position
         this.score = 0;
 
         // get options to quiz question
@@ -141,6 +136,9 @@ let quizApp = {
 
             // show first question
             this.showQuestion(questions[this.currentPosition]);
+
+            // start timer
+            this.quizTimer();
     },
 
     showQuestion: function(q) {
@@ -192,6 +190,20 @@ let quizApp = {
     updateScore: function() {
         let scoreDiv = document.getElementById('score');
         scoreDiv.textContent = 'Score: ' + this.score;
+    },
+
+    quizTimer: function() {
+        let timerInterval = setInterval(function() {
+            let timerDiv = document.getElementById('timer');
+            secondsLeft--;
+            timerDiv.textContent = "Time: " + secondsLeft;
+
+            if (secondsLeft == 0) {
+                clearInterval(timerInterval);
+
+            }
+
+        }, 1000);
     }
 };
 
