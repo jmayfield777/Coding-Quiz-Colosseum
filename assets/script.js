@@ -9,10 +9,112 @@ let question = {
         ]
 };
 
+let questions = [
+    {
+        title: "Which of the following is NOT a commonly used data type?",
+        answer: 3,
+        options: [
+            "booleans",
+            "strings",
+            "numbers",
+            "alerts"
+            ]
+    },
+    {
+        title: "Which of the following is a useful method to iterate over items inside an array?",
+        answer: 1,
+        options: [
+            "do...while",
+            "for loop",
+            "concatenation",
+            "recursive function"
+        ]
+    },
+    {
+        title: "Which scope will hold a variable declared inside a function?",
+        answer: 2,
+        options: [
+            "global",
+            "neighbor",
+            "local",
+            "home"
+        ]
+    },
+    {
+        title: "The condition in a if/else statement is enclosed inside:",
+        answer: 3,
+        options: [
+            "square brackets",
+            "parentheses",
+            "quotes",
+            "curly brackets"
+        ]
+    },
+    {
+        title: "Where do you link to a Javascript file inside the HTML document?",
+        answer: 0,
+        options: [
+            "inside the body but at the bottom",
+            "at the top",
+            "inside the head element",
+            "inside the footer"
+        ]
+    },
+    {
+        title: "Arrays in Javascript can be used to store:",
+        answer: 3,
+        options: [
+            "strings",
+            "numbers",
+            "booleans",
+            "all of the above"
+        ]
+    },
+    {
+        title: "What does DOM stand for?",
+        answer: 2,
+        options: [
+            "Download Order Mechanism",
+            "Deputy Of Movement",
+            "Document Object Model",
+            "Department of Music"
+        ]
+    },
+    {
+        title: "What does the triple equals symbol mean?",
+        answer: 3,
+        options: [
+            "equality operator",
+            "not equal operator",
+            "assignment operator",
+            "strict equality operator"
+        ]
+    },
+    {
+        title: "Which of the following is helpful for debugging code while using the browser:",
+        answer: 0,
+        options: [
+            "the console",
+            "vs code editor",
+            "terminal",
+            "github"
+        ]
+    },
+    {
+        title: "Which of the following can be used to declare a variable?",
+        answer: 3,
+        options: [
+            "var",
+            "let",
+            "const",
+            "all of the above",
+        ]
+    },
+];
+
     /*
     {
-        title: 2,
-        question: "Which of the following is a useful method to iterate over items inside an array?",
+        title: "Which of the following is a useful method to iterate over items inside an array?",
         answer: "for loop",
         options: [
             "do...while",
@@ -21,83 +123,83 @@ let question = {
         ]
     },
     {
-        title: 3,
-        question: "Which scope will hold a variable declared inside a function?",
-        answer: "local",
+        title: "Which scope will hold a variable declared inside a function?",
+        answer: 2,
         options: [
             "global",
             "neighbor",
+            "local",
             "home"
         ]
     },
     {
-        title: 4,
-        question: "The condition in a if/else statement is enclosed inside:",
-        answer: "curly brackets",
+        title: "The condition in a if/else statement is enclosed inside:",
+        answer: 3,
         options: [
             "square brackets",
             "parentheses",
-            "quotes"
+            "quotes",
+            "curly brackets"
         ]
     },
     {
-        title: 5,
-        question: "Where do you link to a Javascript file inside the HTML document?",
-        answer: "inside the body but at the bottom",
+        title: "Where do you link to a Javascript file inside the HTML document?",
+        answer: 0,
         options: [
+            "inside the body but at the bottom"
             "at the top",
             "inside the head element",
             "inside the footer"
         ]
     },
     {
-        title: 6,
-        question: "Arrays in Javascript can be used to store:",
-        answer: "all of the above",
+        title: "Arrays in Javascript can be used to store:",
+        answer: 3,
         options: [
             "strings",
             "numbers",
-            "booleans"
+            "booleans",
+            "all of the above"
         ]
     },
     {
-        title: 7,
-        question: "What does DOM stand for?",
-        answer: "Document Object Model",
+        title: "What does DOM stand for?",
+        answer: 2,
         options: [
             "Download Order Mechanism",
             "Deputy Of Movement",
+            "Document Object Model",
             "Department of Music"
         ]
     },
     {
-        title: 8,
-        question: "What does the triple equals symbol mean?",
-        answer: "strict equality operator",
+        title: "What does the triple equals symbol mean?",
+        answer: 3,
         options: [
             "equality operator",
             "not equal operator",
-            "assignment operator"
+            "assignment operator",
+            "strict equality operator"
         ]
     },
     {
-        title: 9,
-        question: "Which of the following is helpful for debugging code while using the browser:",
-        answer: "the console",
+        title: "Which of the following is helpful for debugging code while using the browser:",
+        answer: 0,
         options: [
+            "the console",
             "vs code editor",
             "terminal",
             "github"
         ]
     },
     {
-        title: 10,
-        question: "Which of the following can be used to declare a variable?",
-        answer: "all of the above",
+        title: "Which of the following can be used to declare a variable?",
+        answer: 
         options: [
             "var",
             "let",
-            "const"
+            "const",
+            "all of the above",
         ]
     },
 ];
