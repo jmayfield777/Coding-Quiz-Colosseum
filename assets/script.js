@@ -163,11 +163,13 @@ let quizApp = {
             // correct answer
             console.log('correct');
             this.score++;
+            this.showResult(true);
         } 
         else {
             // wrong answer
             secondsLeft -= 5;
             console.log('incorrect');
+            this.showResult(false);
         }
         
         // update score
@@ -191,6 +193,19 @@ let quizApp = {
     updateScore: function() {
         let scoreDiv = document.getElementById('score');
         scoreDiv.textContent = 'Score: ' + this.score;
+    },
+
+    showResult: function(isCorrect) {
+        let resultDiv = document.getElementById('result');
+        let result = '';
+        
+        if (isCorrect) {
+            result = "Correct!";
+        } else {
+            result = "Wrong!";
+        }
+
+        resultDiv.textContent = result;
     },
 
     quizTimer: function() {
