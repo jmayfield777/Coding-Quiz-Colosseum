@@ -1,7 +1,7 @@
 let question = {
     title: "Which of the following is NOT a commonly used data type?",
-    answer: "alerts",
-    option: [
+    answer: 3,
+    options: [
         "booleans",
         "strings",
         "numbers",
@@ -109,10 +109,17 @@ let quizApp = {
         // get options to quiz question
         let options = document.querySelectorAll('.options');
     
-        options.forEach(function(element, index) {
-            element.addEventListener('click', function() {
-            // check for correct answer
+        // options.forEach(function(element, index) {
+        //     element.addEventListener('click', function() {
+        //     // check for correct answer
            
+        //     });
+        // });
+
+        options.forEach((element, index) => {
+            element.addEventListener('click', () => {
+            // check for correct answer
+            this.checkAnswer(index);
             });
         });
 
@@ -134,17 +141,19 @@ let quizApp = {
         let options = document.querySelectorAll('.options');
     
         options.forEach(function(element, index) {
-        element.textContent = q.option[index];
+        element.textContent = q.options[index];
 
         });
     },
 
     checkAnswer(userSelect) {
-        if (this.currentQuestion.answer === userSelect ) {
+        if (this.currentQuestion.answer == userSelect ) {
             // correct answer
+            console.log('correct');
         } 
         else {
             // wrong answer
+            console.log('incorrect');
         }
     }
 };
