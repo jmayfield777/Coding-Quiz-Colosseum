@@ -45,7 +45,7 @@ let questions = [
         answer: 3,
         options: [
             "square brackets",
-            "parentheses",
+            "parenthesis",
             "quotes",
             "curly brackets"
         ]
@@ -208,6 +208,9 @@ let questions = [
 
 let quizApp = {
     startQuiz: function() {
+        
+        this.currentPosition = 0;
+
         // get options to quiz question
         let options = document.querySelectorAll('.options');
     
@@ -226,13 +229,10 @@ let quizApp = {
         });
 
     // show first question
-    this.showQuestion(question);
+    this.showQuestion(questions[this.currentPosition]);
     },
 
     showQuestion: function(q) {
-
-        // track current question
-        this.currentQuestion = q;
 
         // select title element
         let titleDiv = document.getElementById('title');
@@ -249,13 +249,30 @@ let quizApp = {
     },
 
     checkAnswer(userSelect) {
-        if (this.currentQuestion.answer == userSelect ) {
+
+        let currentQuestion = questions[this.currentPosition];
+
+        if (currentQuestion.answer == userSelect ) {
             // correct answer
             console.log('correct');
         } 
         else {
             // wrong answer
             console.log('incorrect');
+        }
+
+        // increase currentPosition
+        this.increasePosition();
+
+        // show next question
+        this.showQuestion(questions[this.currentPosition]);
+    },
+
+    increasePosition: function() {
+        this.currentPosition++;
+
+        if (this.currentPosition == questions.length) {
+            this.currentPosition = 0;
         }
     }
 };
