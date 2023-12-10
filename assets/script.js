@@ -104,24 +104,51 @@ let question = {
 
 */
 
-function showQuestion(q) {
-    // select title element
-    let titleDiv = document.getElementById('title');
-
-    // modify title element
-    titleDiv.textContent = q.title;
-
-    let options = document.querySelectorAll('.options');
+let quizApp = {
+    startQuiz: function() {
+        // get options to quiz question
+        let options = document.querySelectorAll('.options');
     
-    options.forEach(function(element, index) {
+        options.forEach(function(element, index) {
+            element.addEventListener('click', function() {
+            // check for correct answer
+           
+            });
+        });
+
+    // show first question
+    this.showQuestion(question);
+    },
+
+    showQuestion: function(q) {
+
+        // track current question
+        this.currentQuestion = q;
+
+        // select title element
+        let titleDiv = document.getElementById('title');
+
+        // modify title element
+        titleDiv.textContent = q.title;
+
+        let options = document.querySelectorAll('.options');
+    
+        options.forEach(function(element, index) {
         element.textContent = q.option[index];
 
-        element.addEventListener('click', function() {
-            // check for correct answer
-            
-        })
-    })
+        });
+    },
 
+    checkAnswer(userSelect) {
+        if (this.currentQuestion.answer === userSelect ) {
+            // correct answer
+        } 
+        else {
+            // wrong answer
+        }
+    }
 };
 
-showQuestion(question);
+
+
+quizApp.startQuiz();
