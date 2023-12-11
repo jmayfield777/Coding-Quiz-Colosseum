@@ -1,3 +1,4 @@
+// create quiz questions
 let questions = [
     {
       prompt: "Which of the following is NOT a commonly used data type?",
@@ -100,3 +101,19 @@ let questions = [
       answer: "all of the above"
     }
 ];
+
+// get dom elements for quiz
+let questionEl = document.querySelector("#questions");
+let timerEl = document.querySelector("#timer");
+let optionsEl = document.querySelector("#options");
+let submitBtn = document.querySelector("#submit-score");
+let startBtn = document.querySelector("#start");
+let nameEl = document.querySelector("#name");
+let feedbackEl = document.querySelector("#feedback");
+let reStartBtn = document.querySelector("#restart");
+
+// set Quiz inital score and timer
+let currentQuestionIndex = 0;
+let time = questions.length * 15;
+let timerId;
+
