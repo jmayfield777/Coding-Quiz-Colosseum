@@ -42,10 +42,39 @@
               penalize your score/time by 
               ten seconds!
             </p>
+            <button id="start">
+              Start Quiz!
+            </button>
           </div>
         </div>
-      </main>
 
+        <div class="hide" id="questions">
+          <h2 id="question-words"></h2>
+          <div class="options" id="options"></div>
+        </div>
+
+        <div class="hide" id="quiz-end">
+          <h2>All Done!</h2>
+          <p>Your final score is: 
+            <span id="score-final">
+            </span>
+          </p>
+          <p>
+            Please enter your name:
+            <input type="text"
+                   id="name"
+                   max="3" />
+            <button id="submit-score">
+              Submit
+            </button>
+          </p>
+        </div>
+
+        <div id="feedback"
+             class="feedback hide">
+        </div>
+      </main>
+      <script src="./script.js"></script>
     </div>
   </body>
 </html>
