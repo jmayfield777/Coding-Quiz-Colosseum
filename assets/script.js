@@ -187,6 +187,7 @@ function questionClick() {
     // displays feedback from its initial class = "hide"
     feedbackEl.setAttribute("class", "feedback");
 
+    // hides feedback message 
     setTimeout(function() {
         feedbackEl.setAttribute(
             "class",
@@ -194,6 +195,8 @@ function questionClick() {
         );
     }, 2000);
     currentQuestionIndex++;
+
+    // alls end quiz function if current question is equal to questions.length or else it gets the next question through the getQuestion function
     if (
         currentQuestionIndex === 
         questions.length
@@ -202,4 +205,26 @@ function questionClick() {
     } else {
         getQuestion();
     }
+}
+
+// function to end the quiz once the timer = 0
+function quizEnd() {
+
+    // clears timerId timer 
+    clearInterval(timerId);
+
+    // declares quiz-end diz to the variable endScreenEl
+    let endScreenEl = getElementById("#quiz-end");
+
+    // shows the endScreenEl by removing the "hide" class
+    endScreenEl.removeAttribute("class");
+
+    // declares score-final span to finalScoreEl variable
+    let finalScoreEl = document.getElementById("score-final");
+
+    // sets finalScoreEl variable to equal time
+    finalScoreEl.textContent = time;
+
+    // hides questions div by adding the "hide" class back
+    questionEl.setAttribute("class", "hide");
 }
