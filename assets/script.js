@@ -137,3 +137,31 @@ function quizStart() {
     getQuestion();
 }
 
+// iterate through questions array and create questions as buttons
+function getQuestion() {
+    // store current question and options in variable
+    let currentQuestion = questions[currentQuestionIndex];
+
+    // stores question in variable
+    let promptEl = document.getElementById("question-words");
+    // makes promptEl match the current question when iterating through questions array
+    promptEl.textContent = currentQuestion.prompt;
+    
+    // sets questions to blank strings so we can iterate through them adding content
+    optionsEl.innerHTML = "";
+
+    // sets function to create button for each option in questions array and trigger next question when button is clicked
+    currentQuestion.options.forEach(
+        function (option, i) {
+            let optionBtn = document.createElement("button");
+
+            optionBtn.setAttribute("value", option);
+
+            optionBtn.textContent = i + 1 + ". " + option;
+
+            optionBtn.onclick = questionClick;
+
+            optionsEl.appendChild(optionBtn);
+        }
+    );
+}
