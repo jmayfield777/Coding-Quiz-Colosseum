@@ -207,7 +207,7 @@ function questionClick() {
     }
 }
 
-// function to end the quiz once the timer = 0
+// function to end the quiz once questions are answered
 function quizEnd() {
 
     // clears timerId timer 
@@ -228,3 +228,71 @@ function quizEnd() {
     // hides questions div by adding the "hide" class back
     questionEl.setAttribute("class", "hide");
 }
+
+// function to end quiz if timer = 0, timerId variable calls this function
+function clockTick() {
+
+    // decrement time 
+    time--;
+
+    // let timerEl equal the time as it decrements
+    timerEl.textContent = time;
+
+    // if time reaches 0 call the quizEnd function
+    if (time <= 0) {
+        quizEnd();
+    }
+}
+
+// save scores and names to local storage
+function saveHighScore() {
+
+    // assigns the value of the name input to the name variable and removes whitespace
+    let name = nameEl.value.trim();
+
+    // if the input is empty return the scores from local storage and converts the string to an object
+    if (name !== "") {
+        let highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
+
+    // sets newScore variable to hold score equal to time variable and name to equal whatever name was input
+    let newScore = {
+        score: time,
+        name: name,
+    };
+
+    // pushes highscores to newScore if new score is not submitted
+    highscores.push(newScore);
+
+    // stores highscores in local storage as a string
+    window.localStorage.setItem(
+        "highscores",
+        JSON.stringify(highscores)
+    );
+
+    // alerts the user that the score has been successfully submitted
+    alert("Your score has been submitted");
+    }
+}
+
+// saves users scores 
+function checkForEnter(event) {
+
+    // if enter is pressed run conditions
+    if (event.key === "Enter") {
+
+        // call previous function
+        saveHighScore();
+
+        // alerts user that score was submitted
+        alert("Your score has been submitted");
+    }
+}
+
+// calls checkForEnter function once name is entered
+nameEl.onkeyup = checkForEnter;
+
+// calls saveHighScore once submit button is pressed
+submitBtn.onclick = saveHighScore;
+
+// starts quiz when start quiz button is pressed
+startBtn.onclick = quizStart
