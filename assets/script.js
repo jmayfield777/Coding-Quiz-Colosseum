@@ -1,226 +1,270 @@
-let questions = [
-    {
-        title: "Which of the following is NOT a commonly used data type?",
-        answer: 3,
-        options: [
-            "booleans",
-            "strings",
-            "numbers",
-            "alerts"
-            ]
-    },
-    {
-        title: "Which of the following is a useful method to iterate over items inside an array?",
-        answer: 1,
-        options: [
-            "do...while",
-            "for loop",
-            "concatenation",
-            "recursive function"
-        ]
-    },
-    {
-        title: "Which scope will hold a variable declared inside a function?",
-        answer: 2,
-        options: [
-            "global",
-            "neighbor",
-            "local",
-            "home"
-        ]
-    },
-    {
-        title: "The condition in a if/else statement is enclosed inside:",
-        answer: 3,
-        options: [
-            "square brackets",
-            "parenthesis",
-            "quotes",
-            "curly brackets"
-        ]
-    },
-    {
-        title: "Where do you link to a Javascript file inside the HTML document?",
-        answer: 0,
-        options: [
-            "inside the body but at the bottom",
-            "at the top",
-            "inside the head element",
-            "inside the footer"
-        ]
-    },
-    {
-        title: "Arrays in Javascript can be used to store:",
-        answer: 3,
-        options: [
-            "strings",
-            "numbers",
-            "booleans",
-            "all of the above"
-        ]
-    },
-    {
-        title: "What does DOM stand for?",
-        answer: 2,
-        options: [
-            "Download Order Mechanism",
-            "Deputy Of Movement",
-            "Document Object Model",
-            "Department of Music"
-        ]
-    },
-    {
-        title: "What does the triple equals symbol mean?",
-        answer: 3,
-        options: [
-            "equality operator",
-            "not equal operator",
-            "assignment operator",
-            "strict equality operator"
-        ]
-    },
-    {
-        title: "Which of the following is helpful for debugging code while using the browser:",
-        answer: 0,
-        options: [
-            "the console",
-            "vs code editor",
-            "terminal",
-            "github"
-        ]
-    },
-    {
-        title: "Which of the following can be used to declare a variable?",
-        answer: 3,
-        options: [
-            "var",
-            "let",
-            "const",
-            "all of the above",
-        ]
-    },
-];
+// script.js 
 
-// timer for quiz
-let secondsLeft = 60;
+let questions = [ 
+	{ 
+		prompt: `Inside which HTML 
+				element do we put 
+				the JavaScript?`, 
+		options: [ 
+			"<javascript>", 
+			"<js>", 
+			"<script>", 
+			"<scripting>", 
+		], 
+		answer: "<script>", 
+	}, 
 
+	{ 
+		prompt: `How do you call a 
+				function named 
+				myFunction?`, 
+		options: [ 
+			"call myFunction()", 
+			"myFunction()", 
+			"call function myFunction", 
+			"Call.myFunction", 
+		], 
+		answer: "myFunction()", 
+	}, 
 
-let quizApp = {
-    startQuiz: function() {
-        
-        // counter for score
-        this.currentPosition = 0;
+	{ 
+		prompt: `How does a for loop 
+				start?`, 
+		options: [ 
+			"for (i = 0; i <= 5; i++)", 
+			"for (i = 0; i <= 5)", 
+			"for i = 1 to 5", 
+			" for (i <= 5; i++)", 
+		], 
+		answer: "for (i = 0; i <= 5; i++)", 
+	}, 
 
-        // counter for position
-        this.score = 0;
+	{ 
+		prompt: `In JavaScript, which 
+				of the following is 
+				a logical operator?`, 
+		options: ["|", "&&", "%", "/"], 
+		answer: "&&", 
+	}, 
 
-        // get options to quiz question
-        let options = document.querySelectorAll('.options');
-    
-        // options.forEach(function(element, index) {
-        //     element.addEventListener('click', function() {
-        //     // check for correct answer
-           
-        //     });
-        // });
+	{ 
+		prompt: `A named element in a 
+				JavaScript program that 
+				is used to store and 
+				retrieve data is a _____.`, 
+		options: [ 
+			"method", 
+			"assignment operator", 
+			"letiable", 
+			"string", 
+		], 
+		answer: "letiable", 
+	}, 
+]; 
 
-        options.forEach((element, index) => {
-            element.addEventListener('click', () => {
-            // check for correct answer
-            this.checkAnswer(index);
-            });
-        });
+// Get Dom Elements 
 
-            // update score
-            this.updateScore();
+let questionsEl = 
+	document.querySelector( 
+		"#questions"
+	); 
+let timerEl = 
+	document.querySelector("#timer"); 
+let choicesEl = 
+	document.querySelector("#options"); 
+let submitBtn = document.querySelector( 
+	"#submit-score"
+); 
+let startBtn = 
+	document.querySelector("#start"); 
+let nameEl = 
+	document.querySelector("#name"); 
+let feedbackEl = document.querySelector( 
+	"#feedback"
+); 
+let reStartBtn = 
+	document.querySelector("#restart"); 
 
-            // show first question
-            this.showQuestion(questions[this.currentPosition]);
+// Quiz's initial state 
+let currentQuestionIndex = 0; 
+let time = questions.length * 15; 
+let timerId; 
 
-            // start timer
-            this.quizTimer();
-    },
+// Start quiz and hide frontpage 
 
-    showQuestion: function(q) {
+function quizStart() { 
+	timerId = setInterval( 
+		clockTick, 
+		1000 
+	); 
+	timerEl.textContent = time; 
+	let landingScreenEl = 
+		document.getElementById( 
+			"start-screen"
+		); 
+	landingScreenEl.setAttribute( 
+		"class", 
+		"hide"
+	); 
+	questionsEl.removeAttribute( 
+		"class"
+	); 
+	getQuestion(); 
+} 
 
-        // select title element
-        let titleDiv = document.getElementById('title');
-        titleDiv.textContent = q.title;
+// Loop through array of questions and 
+// Answers and create list with buttons 
+function getQuestion() { 
+	let currentQuestion = 
+		questions[currentQuestionIndex]; 
+	let promptEl = 
+		document.getElementById( 
+			"question-words"
+		); 
+	promptEl.textContent = 
+		currentQuestion.prompt; 
+	choicesEl.innerHTML = ""; 
+	currentQuestion.options.forEach( 
+		function (choice, i) { 
+			let choiceBtn = 
+				document.createElement( 
+					"button"
+				); 
+			choiceBtn.setAttribute( 
+				"value", 
+				choice 
+			); 
+			choiceBtn.textContent = 
+				i + 1 + ". " + choice; 
+			choiceBtn.onclick = 
+				questionClick; 
+			choicesEl.appendChild( 
+				choiceBtn 
+			); 
+		} 
+	); 
+} 
 
-        // get question options
-        let options = document.querySelectorAll('.options');
-    
-        options.forEach(function(element, index) {
-        element.textContent = q.options[index];
-        });
-    },
+// Check for right answers and deduct 
+// Time for wrong answer, go to next question 
 
-    checkAnswer(userSelect) {
+function questionClick() { 
+	if ( 
+		this.value !== 
+		questions[currentQuestionIndex] 
+			.answer 
+	) { 
+		time -= 10; 
+		if (time < 0) { 
+			time = 0; 
+		} 
+		timerEl.textContent = time; 
+		feedbackEl.textContent = `Wrong! The correct answer was 
+		${questions[currentQuestionIndex].answer}.`; 
+		feedbackEl.style.color = "red"; 
+	} else { 
+		feedbackEl.textContent = 
+			"Correct!"; 
+		feedbackEl.style.color = 
+			"green"; 
+	} 
+	feedbackEl.setAttribute( 
+		"class", 
+		"feedback"
+	); 
+	setTimeout(function () { 
+		feedbackEl.setAttribute( 
+			"class", 
+			"feedback hide"
+		); 
+	}, 2000); 
+	currentQuestionIndex++; 
+	if ( 
+		currentQuestionIndex === 
+		questions.length 
+	) { 
+		quizEnd(); 
+	} else { 
+		getQuestion(); 
+	} 
+} 
 
-        let currentQuestion = questions[this.currentPosition];
+// End quiz by hiding questions, 
+// Stop timer and show final score 
 
-        if (currentQuestion.answer == userSelect) {
-            // correct answer
-            console.log('correct');
-            this.score++;
-            this.showResult(true);
-        } 
-        else {
-            // wrong answer
-            secondsLeft -= 5;
-            console.log('incorrect');
-            this.showResult(false);
-        }
-        
-        // update score
-        this.updateScore();
+function quizEnd() { 
+	clearInterval(timerId); 
+	let endScreenEl = 
+		document.getElementById( 
+			"quiz-end"
+		); 
+	endScreenEl.removeAttribute( 
+		"class"
+	); 
+	let finalScoreEl = 
+		document.getElementById( 
+			"score-final"
+		); 
+	finalScoreEl.textContent = time; 
+	questionsEl.setAttribute( 
+		"class", 
+		"hide"
+	); 
+} 
 
-        // increase currentPosition
-        this.increasePosition();
+// End quiz if timer reaches 0 
 
-        // show next question
-        this.showQuestion(questions[this.currentPosition]);
-    },
+function clockTick() { 
+	time--; 
+	timerEl.textContent = time; 
+	if (time <= 0) { 
+		quizEnd(); 
+	} 
+} 
 
-    increasePosition: function() {
-        this.currentPosition++;
+// Save score in local storage 
+// Along with users' name 
 
-        if (this.currentPosition == questions.length) {
-            this.currentPosition = 0;
-        }
-    },
+function saveHighscore() { 
+	let name = nameEl.value.trim(); 
+	if (name !== "") { 
+		let highscores = 
+			JSON.parse( 
+				window.localStorage.getItem( 
+					"highscores"
+				) 
+			) || []; 
+		let newScore = { 
+			score: time, 
+			name: name, 
+		}; 
+		highscores.push(newScore); 
+		window.localStorage.setItem( 
+			"highscores", 
+			JSON.stringify(highscores) 
+		); 
+		alert( 
+			"Your Score has been Submitted"
+		); 
+	} 
+} 
 
-    updateScore: function() {
-        let scoreDiv = document.getElementById('score');
-        scoreDiv.textContent = 'Score: ' + this.score;
-    },
+// Save users' score after pressing enter 
 
-    showResult: function(isCorrect) {
-        let resultDiv = document.getElementById('result');
-        let result = '';
-        
-        if (isCorrect) {
-            result = "Correct!";
-        } else {
-            result = "Wrong!";
-        }
+function checkForEnter(event) { 
+	if (event.key === "Enter") { 
+		saveHighscore(); 
+		alert( 
+			"Your Score has been Submitted"
+		); 
+	} 
+} 
+nameEl.onkeyup = checkForEnter; 
 
-        resultDiv.textContent = result;
-    },
+// Save users' score after clicking submit 
 
-    quizTimer: function() {
-        let timerInterval = setInterval(function() {
-            let timerDiv = document.getElementById('timer');
-            secondsLeft--;
-            timerDiv.textContent = "Time: " + secondsLeft;
+submitBtn.onclick = saveHighscore; 
 
-            if (secondsLeft == 0) {
-                clearInterval(timerInterval);
+// Start quiz after clicking start quiz 
 
-            }
-
-        }, 1000);
-    }
-};
-
-quizApp.startQuiz();
+startBtn.onclick = quizStart;
