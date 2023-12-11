@@ -165,3 +165,41 @@ function getQuestion() {
         }
     );
 }
+
+// function to check for right answers and deduct time to incorrect answers
+function questionClick() {
+
+    // wrong answer is selected deduct ten seconds
+    if (this.value !== questions[currentQuestionIndex].answer)
+    {
+      time -= 10;
+      // stop timer from going into negatives
+      if (time < 0) {
+        time = 0;
+      }
+      // sets text of timer and feedback if answer is wrong
+      timerEl.textContent = time;
+      feedbackEl.textContent = "Wrong!";
+    } else {
+        // feedback text if answer is correct
+        feedbackEl.textContent = "Correct!";
+    }
+    // displays feedback from its initial class = "hide"
+    feedbackEl.setAttribute("class", "feedback");
+
+    setTimeout(function() {
+        feedbackEl.setAttribute(
+            "class",
+            "feedback hide"
+        );
+    }, 2000);
+    currentQuestionIndex++;
+    if (
+        currentQuestionIndex === 
+        questions.length
+    ) {
+        quizEnd();
+    } else {
+        getQuestion();
+    }
+}
