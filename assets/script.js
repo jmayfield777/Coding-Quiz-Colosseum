@@ -117,3 +117,23 @@ let currentQuestionIndex = 0;
 let time = questions.length * 15;
 let timerId;
 
+// function to start quiz and hide start page
+function quizStart() {
+    // set timer
+    timerId = setInterval(
+        clockTick,
+        1000
+    );
+    timerEl.textContent = time;
+
+    // get start page and hide it
+    let landingScreenEl = document.getElementById("start-screen");
+    landingScreenEl.setAttribute("class", "hide");
+    
+    // show quiz questions
+    questionEl.removeAttribute("class");
+    
+    // call getQuestion function
+    getQuestion();
+}
+
