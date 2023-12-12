@@ -213,8 +213,8 @@ function quizEnd() {
     // clears timerId timer 
     clearInterval(timerId);
 
-    // declares quiz-end diz to the variable endScreenEl
-    let endScreenEl = getElementById("#quiz-end");
+    // declares quiz-end div to the variable endScreenEl
+    let endScreenEl = getElementById("quiz-end");
 
     // shows the endScreenEl by removing the "hide" class
     endScreenEl.removeAttribute("class");

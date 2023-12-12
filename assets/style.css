@@ -1,5 +1,5 @@
 * {
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .quiz,
@@ -9,7 +9,6 @@
 }
 
 .containerNew {
-  border: 5px solid;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -38,14 +37,14 @@ button {
   margin: 10px;
   cursor: pointer;
   color: #fff;
-  background-color: #52865a;
+  background-color: #5c76b5;
   border-radius: 5px;
   border: 0;
   padding: 20px;
 }
 
 button:hover {
-  background-color: #2a8d12;
+  background-color: #12298d;
 }
 
 .options button {
@@ -66,7 +65,7 @@ input[type="text"] {
   margin-top: 20px;
   padding-top: 15px;
   color: #fff;
-  border-top: 2px solid #4b0082;
+  border-top: 2px solid black;
 }
 
 ol {
@@ -77,10 +76,5 @@ ol {
 
 li {
   padding: 5px;
-  list-style: decimal inside none;
+  list-style: none;
 }
-
-li:nth-child(odd) {
-  background-color: #dfdae7;
-}
-
