@@ -102,7 +102,7 @@ let questions = [
     }
 ];
 
-// get dom elements for quiz
+// get elements for quiz
 let questionEl = document.querySelector("#questions");
 let timerEl = document.querySelector("#timer");
 let optionsEl = document.querySelector("#options");
@@ -121,7 +121,7 @@ let timerId;
 function quizStart() {
     // set timer
     timerId = setInterval(
-        clockTick,
+        clockTick(),
         1000
     );
     timerEl.textContent = time;
@@ -181,8 +181,8 @@ function questionClick() {
       timerEl.textContent = time;
       feedbackEl.textContent = "Wrong!";
     } else {
-        // feedback text if answer is correct
-        feedbackEl.textContent = "Correct!";
+      // feedback text if answer is correct
+      feedbackEl.textContent = "Correct!";
     }
     // displays feedback from its initial class = "hide"
     feedbackEl.setAttribute("class", "feedback");
@@ -295,4 +295,4 @@ nameEl.onkeyup = checkForEnter;
 submitBtn.onclick = saveHighScore;
 
 // starts quiz when start quiz button is pressed
-startBtn.onclick = quizStart
+startBtn.onclick = quizStart;
